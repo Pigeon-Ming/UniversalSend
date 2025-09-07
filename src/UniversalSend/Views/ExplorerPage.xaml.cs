@@ -343,11 +343,11 @@ namespace UniversalSend.Views
 
         public async Task<StorageFolder> GetFolderOfCurrentViewAsync()
         {
-            if (folderStack.Count <= 1)
+            if (folderStack.Count == 0)
             {
                 return await StorageHelper.GetReceiveStoageFolderAsync();
             }
-            StorageFolder folder = folderStack[folderStack.Count - 2];
+            StorageFolder folder = folderStack[folderStack.Count - 1];
             return folder;
         }
 
@@ -476,14 +476,20 @@ namespace UniversalSend.Views
         {
             if (RightTabedItem == null)
             {
-                ListViewFlyout.Hide();
-                return;
+                if (ClipboardItem == null)
+                    ListViewFlyout.Hide();
+                else
+                    ListViewFlyout_Open.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                    ListViewFlyout_Open.Visibility = Visibility.Visible;
             }
             if (RightTabedItem is StorageFile)
             {
                 ListViewFlyout_OpenFilePath.Text = "打开文件位置";
             }
-            else if(RightTabedItem is StorageFolder)
+            else if (RightTabedItem is StorageFolder)
             {
                 ListViewFlyout_OpenFilePath.Text = "打开文件夹位置";
             }
@@ -517,9 +523,9 @@ namespace UniversalSend.Views
         private async void ListViewFlyout_Paste_Click(object sender, RoutedEventArgs e)
         {
             StorageFolder currentFolder = await GetFolderOfCurrentViewAsync();
-            if (RightTabedItem is StorageFile)
+            if (ClipboardItem is StorageFile)
             {
-                StorageFile file = (StorageFile)RightTabedItem;
+                StorageFile file = (StorageFile)ClipboardItem;
                 if (CutMode)
                 {
                     await file.MoveAsync(currentFolder);

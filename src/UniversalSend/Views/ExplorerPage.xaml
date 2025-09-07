@@ -16,7 +16,7 @@
                 </Grid.RowDefinitions>
                 <Image Margin="4" Width="128" Height="128" Source="{x:Bind Icon}" x:Phase="1"/>
 
-                <TextBlock Grid.Row="1" Margin="3" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextWrapping="Wrap" MaxLines="3" TextTrimming="Clip"  Text="{x:Bind Name}" x:Phase="0"/>
+                <TextBlock Grid.Row="1" Margin="3" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextWrapping="Wrap" MaxLines="2" TextTrimming="CharacterEllipsis"  Text="{x:Bind Name}" x:Phase="0"/>
             </Grid>
         </DataTemplate>
         <Style x:Name="GridViewModeListViewItemStyle" TargetType="ListViewItem">
@@ -91,13 +91,13 @@
                                 <FontIcon Glyph="&#xE8AD;" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
-                        <MenuFlyoutSeparator/>
-                        <MenuFlyoutItem Text="剪切" Name="ListViewFlyout_Cut" Click="ListViewFlyout_Cut_Click">
+                        <MenuFlyoutSeparator Visibility="{Binding ElementName=ListViewFlyout_Open,Path=Visibility}"/>
+                        <MenuFlyoutItem Text="剪切" Name="ListViewFlyout_Cut" Click="ListViewFlyout_Cut_Click" Visibility="{Binding ElementName=ListViewFlyout_Open,Path=Visibility}">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE8C6;" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem Text="复制" Name="ListViewFlyout_Copy" Click="ListViewFlyout_Copy_Click">
+                        <MenuFlyoutItem Text="复制" Name="ListViewFlyout_Copy" Click="ListViewFlyout_Copy_Click" Visibility="{Binding ElementName=ListViewFlyout_Open,Path=Visibility}">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE8C8;" />
                             </MenuFlyoutItem.Icon>
@@ -107,30 +107,30 @@
                                 <FontIcon Glyph="&#xE77F;" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
-                        <MenuFlyoutSeparator/>
-                        <MenuFlyoutItem Name="ListViewFlyout_OpenFilePath" Click="ListViewFlyout_OpenFilePath_Click">
+                        <MenuFlyoutSeparator Visibility="{Binding ElementName=ListViewFlyout_Open,Path=Visibility}"/>
+                        <MenuFlyoutItem Name="ListViewFlyout_OpenFilePath" Click="ListViewFlyout_OpenFilePath_Click" Visibility="{Binding ElementName=ListViewFlyout_Open,Path=Visibility}">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xED25;" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem Text="复制完整路径" Name="ListViewFlyout_CopyFilePath" Click="ListViewFlyout_CopyFilePath_Click">
+                        <MenuFlyoutItem Text="复制完整路径" Name="ListViewFlyout_CopyFilePath" Click="ListViewFlyout_CopyFilePath_Click" Visibility="{Binding ElementName=ListViewFlyout_Open,Path=Visibility}">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE62F;" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
-                        <MenuFlyoutSeparator/>
-                        <MenuFlyoutItem Text="彻底删除" Name="ListViewFlyout_Delete" Click="ListViewFlyout_Delete_Click">
+                        <MenuFlyoutSeparator Visibility="{Binding ElementName=ListViewFlyout_Open,Path=Visibility}"/>
+                        <MenuFlyoutItem Text="彻底删除" Name="ListViewFlyout_Delete" Click="ListViewFlyout_Delete_Click" Visibility="{Binding ElementName=ListViewFlyout_Open,Path=Visibility}">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE74D;"/>
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem Text="重命名" Name="ListViewFlyout_Rename" Click="ListViewFlyout_Rename_Click">
+                        <MenuFlyoutItem Text="重命名" Name="ListViewFlyout_Rename" Click="ListViewFlyout_Rename_Click" Visibility="{Binding ElementName=ListViewFlyout_Open,Path=Visibility}">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE8AC;" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
-                        <MenuFlyoutSeparator/>
-                        <MenuFlyoutItem Text="属性" Name="ListViewFlyout_Properties" Click="ListViewFlyout_Properties_Click">
+                        <MenuFlyoutSeparator Visibility="{Binding ElementName=ListViewFlyout_Open,Path=Visibility}"/>
+                        <MenuFlyoutItem Text="属性" Name="ListViewFlyout_Properties" Click="ListViewFlyout_Properties_Click" Visibility="{Binding ElementName=ListViewFlyout_Open,Path=Visibility}">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE946;" />
                             </MenuFlyoutItem.Icon>
